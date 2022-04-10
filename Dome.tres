@@ -1,0 +1,24 @@
+[gd_resource type="SphereMesh" load_steps=3 format=2]
+
+[ext_resource path="res://cloud/Cloud.shader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=17]
+render_priority = -128
+shader = ExtResource( 1 )
+shader_param/seed = -1000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0.0003, 0.0004 )
+shader_param/min_density = 0.292
+shader_param/max_density = 9.52671
+shader_param/altitude = 300.0
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/detail_noise = true
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[resource]
+material = SubResource( 17 )
+radius = 100.0
+height = 200.0
+radial_segments = 8
+rings = 3

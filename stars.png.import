@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Sky1_k.png-6e70d7a489cb376215419c734ab1b3f9.s3tc.stex"
-path.etc2="res://.import/Sky1_k.png-6e70d7a489cb376215419c734ab1b3f9.etc2.stex"
+path.s3tc="res://.import/stars.png-b3da98371ca9e8691c340b40b84b6956.s3tc.stex"
+path.etc2="res://.import/stars.png-b3da98371ca9e8691c340b40b84b6956.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://cloud/Sky1_k.png"
-dest_files=[ "res://.import/Sky1_k.png-6e70d7a489cb376215419c734ab1b3f9.s3tc.stex", "res://.import/Sky1_k.png-6e70d7a489cb376215419c734ab1b3f9.etc2.stex" ]
+source_file="res://cloud/stars.png"
+dest_files=[ "res://.import/stars.png-b3da98371ca9e8691c340b40b84b6956.s3tc.stex", "res://.import/stars.png-b3da98371ca9e8691c340b40b84b6956.etc2.stex" ]
 
 [params]
 
@@ -20,12 +20,12 @@ compress/mode=2
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
-compress/normal_map=2
-flags/repeat=0
+compress/normal_map=0
+flags/repeat=true
 flags/filter=true
-flags/mipmaps=false
+flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=0
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

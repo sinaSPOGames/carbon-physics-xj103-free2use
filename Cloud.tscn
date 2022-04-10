@@ -1,0 +1,142 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://cloud/Cloud.shader" type="Shader" id=1]
+[ext_resource path="res://cloud/Cloud.gd" type="Script" id=2]
+[ext_resource path="res://cloud/Dome.tres" type="SphereMesh" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+render_priority = -125
+shader = ExtResource( 1 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0.002, 0 )
+shader_param/min_density = 0.6
+shader_param/max_density = 6.0
+shader_param/altitude = 1200.0
+shader_param/color = Color( 0.403922, 0.403922, 0.403922, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=2]
+render_priority = -126
+next_pass = SubResource( 1 )
+shader = ExtResource( 1 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0.002, 0 )
+shader_param/min_density = 0.510823
+shader_param/max_density = 10.4589
+shader_param/altitude = 1266.67
+shader_param/color = Color( 0.735076, 0.735076, 0.735076, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=3]
+render_priority = -127
+next_pass = SubResource( 2 )
+shader = ExtResource( 1 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0.002, 0 )
+shader_param/min_density = 0.480657
+shader_param/max_density = 11.9671
+shader_param/altitude = 1333.33
+shader_param/color = Color( 0.933769, 0.933769, 0.933769, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ShaderMaterial" id=4]
+render_priority = -128
+next_pass = SubResource( 3 )
+shader = ExtResource( 1 )
+shader_param/seed = -10000.0
+shader_param/speed = Vector2( 2, 0 )
+shader_param/transform_speed = Vector2( 0.002, 0 )
+shader_param/min_density = 0.529466
+shader_param/max_density = 9.52671
+shader_param/altitude = 1400.0
+shader_param/color = Color( 1, 1, 1, 1 )
+shader_param/detail_noise = false
+shader_param/upper_enabled = true
+shader_param/lower_enabled = false
+
+[sub_resource type="ProceduralSky" id=5]
+sun_latitude = -51.16
+
+[sub_resource type="Environment" id=6]
+background_mode = 2
+background_sky = SubResource( 5 )
+
+[sub_resource type="Animation" id=7]
+resource_name = "cycle clear"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Game ENV:environment:background_sky:sky_top_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.647059, 0.839216, 0.945098, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Game ENV:environment:background_sky:sky_horizon_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.839216, 0.917647, 0.980392, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Game ENV:environment:background_sky:sky_curve")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.09 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Game ENV:environment:background_sky:sky_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[node name="Cloud" type="MeshInstance"]
+transform = Transform( 50.025, 0, 0, 0, 50.025, 0, 0, 0, 50.025, 0, 0, 0 )
+material_override = SubResource( 4 )
+generate_lightmap = false
+mesh = ExtResource( 3 )
+material/0 = null
+script = ExtResource( 2 )
+shade_color = Color( 0.403922, 0.403922, 0.403922, 1 )
+cloud_seed = -10000.0
+cloud_transform_speed = Vector2( 0.002, 0 )
+cloud_thickness = 200.0
+cloud_altitude = 1200.0
+auto_follow_camera = false
+
+[node name="Game ENV" type="WorldEnvironment" parent="."]
+environment = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+"anims/cycle clear" = SubResource( 7 )

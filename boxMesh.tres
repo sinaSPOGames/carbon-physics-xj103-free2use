@@ -1,0 +1,32 @@
+[gd_resource type="CubeMesh" load_steps=7 format=2]
+
+[ext_resource path="res://addons/cloud/Cloud.shader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=1]
+render_priority = -124
+shader = ExtResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=2]
+render_priority = -125
+next_pass = SubResource( 1 )
+shader = ExtResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+render_priority = -126
+next_pass = SubResource( 2 )
+shader = ExtResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=4]
+render_priority = -127
+next_pass = SubResource( 3 )
+shader = ExtResource( 1 )
+
+[sub_resource type="ShaderMaterial" id=5]
+render_priority = -128
+next_pass = SubResource( 4 )
+shader = ExtResource( 1 )
+
+[resource]
+material = SubResource( 5 )
+flip_faces = true
+size = Vector3( 0.2, 0.2, 0.2 )
